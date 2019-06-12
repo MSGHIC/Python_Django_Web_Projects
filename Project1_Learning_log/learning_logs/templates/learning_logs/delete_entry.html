@@ -1,0 +1,28 @@
+{% extends "learning_logs/base.html" %}
+{% load bootstrap3 %}
+
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
+
+{% block header %}
+	<h2 style="color:red">{% fontawesome_icon 'trash-alt' color='red' %}Delete Entry?</h2>
+{% endblock header %}
+
+{% block content %}
+	<h3><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a></h3>
+	<form action="{% url 'learning_logs:delete_entry' entry.id %}" method='post' class="form">
+			<!--prevent attackers
+			from using the form to gain unauthorized access to the server (this kind of
+			attack is called a cross-site request forgery)-->
+			{% csrf_token %}
+			<div class="panel-body">
+				{{ entry.text|linebreaks }}
+			</div>
+			Do you want to delete this? Type "YES" or "NO"
+			{% bootstrap_form form %}
+			{% buttons %}
+				<button name="submit" class="btn btn-danger">OK</button>
+			{% endbuttons %}
+	</form>
+
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends "learning_logs/base.html" %}
+{% block header %}
+
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
+  {% block title %}
+    Error-Learning log
+  {% endblock title %}
+<h2>
+	{% fontawesome_icon 'exclamation-circle' color='red' %}
+	<p>The item you requested is not available.</p> 
+	Error(404)
+</h2>
+{% endblock header %}

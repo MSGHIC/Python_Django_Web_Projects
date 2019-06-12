@@ -1,0 +1,15 @@
+{% extends "learning_logs/base.html" %}
+{% block header %}
+
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
+ {% block title %}
+    Error-Learning log
+  {% endblock title %}
+<h2>
+	{% fontawesome_icon 'exclamation-circle' color='red' %}
+	<p>There has been an internal problem.</p> 
+	<p>Our engineering team is on the case and will have things back to normal shortly.</p>
+	Error(500)
+</h2>
+{% endblock header %}

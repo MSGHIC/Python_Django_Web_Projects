@@ -1,0 +1,24 @@
+{% extends "learning_logs/base.html" %}
+
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
+
+{% block header %}
+	<h1>{% fontawesome_icon 'book' %}Topics</h1>
+{% endblock header %}
+
+{% block content %}
+
+	
+	
+	<ul>
+		{% for topic in topics %}
+			<h3>
+				<a href="{% url 'learning_logs:topic' topic.id %}">{% fontawesome_icon 'star' color='green' %}{{ topic }}</a>
+			</h3>
+		{% empty %}
+			<li>No topics have been added yet.</li>
+		{% endfor %}
+	</ul>
+	<h3><a href="{% url 'learning_logs:new_topic' %}">{% fontawesome_icon 'plus-circle' color='green' %}Add new topic</h3>
+{% endblock content %}

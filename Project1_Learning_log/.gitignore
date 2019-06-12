@@ -1,0 +1,4 @@
+WebDev_Django/
+.spyproject/
+__pycache__/
+*.sqlite3
