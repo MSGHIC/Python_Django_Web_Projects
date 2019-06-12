@@ -13,5 +13,4 @@ This repo conatains Web applications built with Python and Django backend.
 
 **Links to projects**
 
-*[Project 1](https://learn-curve.herokuapp.com)*
-<a href="http://www.quora.com/Adam-DAngelo">Quora profile link for Adam D'Angelo</a>
+<a href="https://learn-curve.herokuapp.com" target="_blank">*Project 1*</a>
