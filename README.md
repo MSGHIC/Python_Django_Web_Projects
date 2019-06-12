@@ -1,5 +1,5 @@
 # Python_Django_Web_Projects
-Web applications built with Python and Django backend.
+This repo conatains Web applications built with Python and Django backend.
 
 **Dependencies**
 
