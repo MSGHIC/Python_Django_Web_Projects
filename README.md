@@ -5,7 +5,7 @@ This repo conatains Web applications built with Python and Django backend.
 
 *Pythin 3.6.4*
 
-*Django 2.1*
+*Django 2.1* 
 
 *other dependencies as outlined in requirements.txt file for each project.*
 
@@ -14,3 +14,4 @@ This repo conatains Web applications built with Python and Django backend.
 **Links to projects**
 
 <a href="https://learn-curve.herokuapp.com" target="_blank">*Project 1*</a>
+*[Project 2](https://smartaccountant.herokuapp.com)*
