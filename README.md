@@ -14,4 +14,5 @@ This repo conatains Web applications built with Python and Django backend.
 **Links to projects**
 
 <a href="https://learn-curve.herokuapp.com" target="_blank">*Project 1*</a>
+>>>>
 *[Project 2](https://smartaccountant.herokuapp.com)*
