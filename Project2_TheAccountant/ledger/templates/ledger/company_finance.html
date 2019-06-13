@@ -1,0 +1,30 @@
+{% extends "ledger/base.html" %}
+{% load bootstrap3 %}
+
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
+
+
+{% load static %}
+{% block header %}
+	
+	<a href="{% url 'ledger:index' %}"><img class="image" src="{{ object.Company_logo.url }}" width="70%" height="150px"  alt=""></a>
+	
+	<h3 class="data" style=" text-align:right ">Total Members:<span class="badge badge-primary badge-pill">{{object.Number_of_members}}</span> </h3>
+	
+{% endblock header %}
+
+{% block content %}
+
+	<div class="data">
+	<h2>Company Status: </h2>
+	<ul>
+		<h3><span class="badge ">Balance brought forward:</span>&nbsp &nbsp &nbsp &nbspUGX {{object.Balance_BF}}</h3>
+		<h3><span class="badge ">Total Debts:</span>&nbsp &nbsp &nbsp &nbsp UGX {{object.total_debts}}</h3>
+		<h3><span class="badge ">Company Value:</span>&nbsp &nbsp &nbsp &nbsp UGX {{object.Company_value}}</h3>
+		<h3><span class="badge ">General Share:</span>&nbsp &nbsp &nbsp &nbsp UGX {{object.general_share}}</h3>
+		<h3><span class="badge ">Cash at Bank:</span>&nbsp &nbsp &nbsp &nbsp UGX {{object.Liquid_value}}</h3>
+	</ul>
+	</div>
+
+{% endblock content %}

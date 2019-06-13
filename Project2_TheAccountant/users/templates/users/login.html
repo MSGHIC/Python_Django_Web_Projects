@@ -1,0 +1,38 @@
+{% extends "ledger/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% load bootstrap3 %}
+
+{% block header %}
+	<h2>Log in to your account.</h2>
+{% endblock header %}
+
+{% block content %}
+<div class="container" style="margin-top:30px">
+            
+         
+
+<form method="post" action="{% url 'users:login' %}" class="form">
+		{% csrf_token %}
+		
+		{% bootstrap_form form %}
+		{% buttons %}
+				<button name="submit" class="btn btn-primary">log in</button>
+		{% endbuttons %}
+		<!--redirect the user after they’ve logged in successfully-->
+		<input type="hidden" name="next" value="{% url 'ledger:index' %}" />
+
+		
+		   <div class="alert alert-danger">  
+                
+                <h4 class="alert-heading">Not registered?</h4>              
+				<span>
+					<button class="close" data-dismiss="alert">&times;</button>
+				</span>
+				<hr/>
+				<p class="mb-0">Sorry, access is restricted to only registered users, ask admin for permission.</p>  
+			</div>
+</form>
+
+{% endblock content %}

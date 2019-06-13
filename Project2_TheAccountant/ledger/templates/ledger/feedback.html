@@ -1,0 +1,29 @@
+{% extends "ledger/base.html" %}
+{% load bootstrap3 %}
+
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
+
+{% block title %}Contact Us{% endblock title %}
+
+{% block content %}
+<h1>Contact us</h1>
+
+{% if submitted %}
+    <p class="success">
+        Your message was submitted successfully. Thank you.
+    </p>
+
+{% else %}
+    <div id = "wrapper">
+	<form  action="{% url 'ledger:feedback'%}" method="post"  class="form" >
+		{% csrf_token %}
+		{% bootstrap_form form %}
+		{% buttons %}
+        
+		<button name="submit" class="btn btn-primary">Submit </button>
+			{% endbuttons %}
+		</form>
+     </div>   
+    {% endif %}
+{% endblock content %}

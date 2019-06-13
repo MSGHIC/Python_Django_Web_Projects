@@ -1,0 +1,55 @@
+{% extends "ledger/base.html" %}
+
+{% load bootstrap3 %}
+
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
+
+{% block header %}
+	<h1 class="title" >Fill Loan Application:</h1>
+{% endblock header %}
+
+{% block content %}
+
+	<form action="{% url 'ledger:loan_application'%}" method='post'    class="form" >
+			<h3>  {{user.last_name}}, you can borrow up to a max of UGX {{max_loan|floatformat:0}}
+			<!--prevent attackers
+			from using the form to gain unauthorized access to the server (this kind of
+			attack is called a cross-site request forgery)-->
+			{% csrf_token %}
+			{% bootstrap_form form %}
+			
+		
+		<div>
+			<h2> TERMS & CONDITIONS</h2>
+			<P>
+				 This agreement, shall be due and payable, including the principal and any accrued interest, as follows:
+			<ol>
+				<li>	Within the duration as entered above, Borrower promises to pay  THE4 amount as entered above and interest computed as per interest rates below. </li>
+				<li>All payments made by the Borrower are to be applied first (1st) to any accrued interest and then to the principal balance. The total amount of the loan shall be due and payable on the last working day of every month.</li>
+				<li>	Accountability: You are fully responsible for paying back the full amount. </li>
+				<li>	Late Charge: Any installment not remunerated within ten (10) days of its due date shall be subject to a belatedly charge of 1% of the payment.</li>
+				<li>	Security: To protect Lender, you may be required to give what is known as a security(if loan amount exceeds your shares).</li>
+				<li>	Default: If for any reason you not succeed to make any payment on time,you shall be in default. The Lender can then order instant payment of the entire remaining unpaid balance of this loan, without giving anyone further notices. </li>
+				<li>If you has not paid the full amount of the loan when the final payment is due, the Lender will charge Borrower interest on the unpaid balance at 2 percent (2%) per month. </li>
+				<li>	Collection fees: If this note is placed with a legal representative for collection, then Borrower agrees to pay an attorney's fee of fifteen percent (15%) of the voluntary balance. This fee will be added to the unpaid balance of the loan. </li>
+
+
+				<li>
+					<p>Borrowing rates per month are as follows;</p>
+					<ul>
+						<li>100,000-500,000……5%</li>
+						<li>500,001-1,000,000……4%</li>
+						<li>1,000,001-3,000,000…3%</li>
+						<li>3,000,001 and above…2%</li>
+					</ul>
+				</li>
+			</ol>
+		</div>
+		{% buttons %}
+				<p class="alert-danger">By clicking APPLY, YOU AGREE TO THE TERMS AND CONDITIONS:			
+					&nbsp &nbsp &nbsp <button name="submit applic" class="btn btn-sucess">APPLY </button>
+				</p>
+		{% endbuttons %}
+	</form>
+{% endblock content %}

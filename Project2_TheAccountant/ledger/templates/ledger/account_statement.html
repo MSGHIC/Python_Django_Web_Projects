@@ -1,0 +1,38 @@
+{% extends "ledger/base.html" %}
+{% load bootstrap3 %}
+
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
+
+{% load static %}
+
+{% block header %}
+	<a href="{% url 'ledger:index' %}"><img class="image" src="{{ object.Company_logo.url }}"  width="70%" height="150px" ></a>
+
+		
+{% endblock header %}
+
+{% block content %}
+
+	<div class="data">
+		
+		<h2>Account Mini Statement: </h2>
+		<ul>
+		<h3> <span class="badge ">A/C Name:</span>&nbsp &nbsp &nbsp &nbsp  {{user.get_full_name}}</h3>
+		<h3> <span class="badge ">Account Capital:</span>&nbsp &nbsp &nbsp &nbsp UGX {{object1.member_capital}} </h3>
+		<h3><span class="badge ">Subscription Debt:</span>&nbsp &nbsp &nbsp &nbsp UGX {{object1.member_debt}}</h3>
+		<h3><span class="badge ">Loan Debt:</span>&nbsp &nbsp &nbsp &nbsp UGX {{object1.member_loan}}</h3>
+		<h3><span class="badge ">Total Debt: </span>&nbsp &nbsp &nbsp &nbspUGX {{object1.member_total_debts}}</h3>
+		{% if object1.member_total_debts > object1.member_capital %}
+			<h3><span class="badge ">Share:</span>&nbsp &nbsp &nbsp &nbsp <p style={color = 'red'}>Deficit State(Your Total Debts overtake account capital);Clear Your Debts to regain your shares!</p></h3>
+		{% else %}
+		<h3><span class="badge ">Share:</span>&nbsp &nbsp &nbsp &nbsp{{object1.member_share|floatformat:2}}%</h3>
+		
+		{% endif %}
+		</ul>
+		
+	</div>
+	
+	
+
+{% endblock content %}

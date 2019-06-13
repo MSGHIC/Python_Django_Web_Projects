@@ -1,0 +1,24 @@
+{% extends "ledger/base.html" %}
+
+{% load bootstrap3 %}
+
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
+
+{% block header %}
+	<h2>{% fontawesome_icon 'edit' color='green' %}Hello {{user.username}}&nbsp,Upload Company Document:</h2>
+{% endblock header %}
+
+{% block content %}
+
+	<form action="{% url 'ledger:archive'%}" method='post' enctype="multipart/form-data"   class="form" >
+			<!--prevent attackers
+			from using the form to gain unauthorized access to the server (this kind of
+			attack is called a cross-site request forgery)-->
+			{% csrf_token %}
+			{% bootstrap_form form %}
+			{% buttons %}
+				<button name="submit" class="btn btn-primary">POST </button>
+			{% endbuttons %}
+		</form>
+{% endblock content %}

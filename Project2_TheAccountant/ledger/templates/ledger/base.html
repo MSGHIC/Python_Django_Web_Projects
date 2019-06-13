@@ -1,0 +1,116 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
+		
+		{% load bootstrap3 %}
+		{% load fontawesome %}
+		{% fontawesome_stylesheet %}
+		
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+											
+		<title>TheAccountant</title>
+		{% bootstrap_css %}
+		{% bootstrap_javascript %}
+	</head>
+	<body>
+		<!-- Static navbar -->
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<div class="navbar-header">
+					<!--button that will appear if the browser window
+						is too narrow to display the whole navigation bar horizontally-->
+					
+					<button type="button" class="navbar-toggle collapsed"  
+						data-toggle="collapse" data-target="#navbar"
+						aria-expanded="false" aria-controls="navbar">
+						
+							{% if user.is_authenticated %}
+								{% fontawesome_icon 'user' color='green' %}
+								{% fontawesome_icon 'bars' color='green' %}
+							{% else %}
+								{% fontawesome_icon 'user' color='red' %}
+								{% fontawesome_icon 'bars' color='red' %}
+							{% endif %}
+														
+					</button>
+					<a class="navbar-brand" href="{% url 'ledger:index' %}"><img class="image" src="{% static 'images/THE4.jpg' %}" width="100px" height="30px" alt=""/></a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+									<ul class="nav navbar-nav">
+									
+									<div class="btn-group" >
+											<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												My Account
+											</button>
+											<div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+													<li><a href="{% url 'ledger:payment' %}">Record Payment</a></li>
+													<li><a href="{% url 'ledger:account_statement' %}">Account Statement</a></li>
+											</div>
+									</div>	
+									
+									<div class="btn-group">
+											<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												Services
+											</button>
+											<div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+													<li><a href="{% url 'ledger:loan_application' %}">Apply for a Loan</a></li>
+													<li><a href="{% url 'ledger:company_finance' %}">Company Finance</a></li>
+													<li><a href="{% url 'ledger:archives' %}">Archive</a></li>
+											</div>
+									</div>	
+										
+										
+									
+									</ul>
+									<ul class="nav navbar-nav navbar-right">
+										{% if user.is_authenticated %}
+											<li><a>Hello, {{ user.username }}.</a></li>
+											<li><a href="{% url 'users:logout' %}">Sign out</a></li>
+										{% else %}
+											
+											<li><a href="{% url 'users:login' %}">Sign in</a></li>
+										{% endif %}
+									</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</nav>	
+						
+						<div class="container">
+							<div class="page-header">
+							{% block header %}{% endblock header %}
+							</div>
+							<div>
+							{% block content %}
+							<div class="container">
+							
+							
+							</div>
+							{% endblock content %}
+							</div>
+						</div> <!-- /container -->
+	</body>
+	<footer align="center" >
+		<div class="container">								
+			
+			<div class="navbar navbar-light" style="background-color: #e3f2fd;">
+				
+				<!--<div class= "navbar-text pull-center">-->
+			<!-- Add in your social media / github links here -->
+				<ul class="nav navbar-nav navbar">	
+					<li><a href="#">&copy; TheAccountant 2019</a> </li>
+					<li><a href="https://protecug.herokuapp.com" target="_blank">By:Protecsoft&trade; </a> </li>
+					<li><a href ="{% url 'ledger:feedback' %}" >{% fontawesome_icon 'envelope' color='green' large=True spin=True %}Send Feedback</a></li>
+					<li><a href="#" >Our Privacy Policy</a>
+				</ul>
+				
+				
+			</div>  
+		</div>
+	</footer>
+	
+</html>

@@ -1,0 +1,12 @@
+{% extends "ledger/base.html" %}
+{% block header %}
+
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
+
+<h2>
+	<p>{% fontawesome_icon 'exclamation-circle' color='red' large=True spin=True%}
+	Sorry,the item you requested is not available.</p>
+	<p>Error(404)</p>
+</h2>
+{% endblock header %}

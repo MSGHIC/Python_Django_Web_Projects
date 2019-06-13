@@ -1,0 +1,36 @@
+{% extends "ledger/base.html" %}
+
+{% load bootstrap3 %}
+
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
+
+{% block header %}
+<div class='jumbotron'>
+	
+	<h3>{{msg1}}</h3>
+		<h4>{{msg2}}</h4>
+		
+	</div>
+{% endblock header %}
+{% block content %}
+<div> <h2>Pending Loan Details:</h2>
+	
+			<ul>
+				
+				<h3>Loan date:&nbsp &nbsp{{loan.date_added}}</h3>
+				<h3>Principal:&nbsp&nbsp UGX{{loan.loan_amount}}</h3>
+				<h3>Interest:&nbsp&nbspUGX{{loan.interest}}</h3>
+				<h3>Monthly Installment:&nbsp&nbspUGX{{ loan.monthly_installment}}</h3>
+				<h3>Balance:&nbsp&nbspUGX{{account.member_loan}} </h3>
+				<h3>To be paid within:&nbsp&nbsp{{loan.duration}} Month(s)</h3>
+				<h3>Status:&nbsp{{loan.status}}</h3><p>(AP-Approved, IR-In_Review, and RJ-Rejected)</p>
+				
+				
+			</ul>
+			
+	
+		
+	</div>
+
+{% endblock content %}

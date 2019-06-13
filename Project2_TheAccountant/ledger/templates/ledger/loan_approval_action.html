@@ -1,0 +1,29 @@
+{% extends "ledger/base.html" %}
+
+{% load bootstrap3 %}
+
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
+
+{% block header %}
+<div class='jumbotron'>
+	
+	<h2>Verify application and approve or reject it.</h2>
+	
+		
+	</div>
+{% endblock header %}
+{% block content %}
+	
+	<form action="{% url 'ledger:loan_approval_action'%}" method='post'  class="form" >
+			<!--prevent attackers
+			from using the form to gain unauthorized access to the server (this kind of
+			attack is called a cross-site request forgery)-->
+			{% csrf_token %}
+			{% bootstrap_form form %}
+			{% buttons %}
+				<button name="submit" class="btn btn-primary">Save </button>
+			{% endbuttons %}
+		</form>
+
+{% endblock content %}

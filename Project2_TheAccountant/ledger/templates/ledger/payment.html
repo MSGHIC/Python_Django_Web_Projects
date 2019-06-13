@@ -1,0 +1,24 @@
+{% extends "ledger/base.html" %}
+
+{% load bootstrap3 %}
+
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
+
+{% block header %}
+	<h1 class="title">{% fontawesome_icon 'edit' color='green' %}Hi {{user.last_name}}&nbsp,Please record your payment:</h1>
+{% endblock header %}
+
+{% block content %}
+
+	<form action="{% url 'ledger:payment'%}" method='post' enctype="multipart/form-data" class="form" >
+			<!--prevent attackers
+			from using the form to gain unauthorized access to the server (this kind of
+			attack is called a cross-site request forgery)-->
+			{% csrf_token %}
+			{% bootstrap_form form %}
+			{% buttons %}
+				<button name="submit" class="btn btn-primary">Save </button>
+			{% endbuttons %}
+		</form>
+{% endblock content %}

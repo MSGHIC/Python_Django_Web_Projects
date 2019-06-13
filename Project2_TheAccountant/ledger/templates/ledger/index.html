@@ -1,0 +1,41 @@
+{% extends "ledger/base.html" %}
+{% load static %}
+	
+{% block header %}
+	<div class='jumbotron'>
+		<img class="image"  src="{% static 'images/theaccountant2.jpg' %}" width="100%" height="335px" alt=""/>
+				
+				
+			<div class="alert alert-danger">  <!--can be alert-danger/warning/success/info etc"colors"-->
+                
+                <h4 class="alert-heading">Warning!</h4>              
+				<span>
+					<button class="close" data-dismiss="alert">&times;</button>
+				</span>
+				<hr/>
+				<p class="mb-0">Note: System Under Construction, not up to date!!</p>  <!-- mb-0.....margin bottom = zero-->
+			</div>
+				
+			<h3 align=right> <span class="badge badge-success ">   ...{% now "jS \o\f F" %}</span></h3>
+	</div>
+{% endblock header %}
+
+{% block content %}
+	<div class="title">
+		<h2 >
+			Trusted Financial Management System
+		</h2>
+	
+		<h3>For Your Partnership</h3>
+	</div>
+	<h4>Record your<a href="{% url 'ledger:payment' %}"> payments</a>, Track your payments &<a href="{% url 'ledger:account_statement' %}"> View account statement</a>
+	, Apply for a <a href="{% url 'ledger:loan_application' %}">loan</a> , Check on <a href="{% url 'ledger:company_finance' %}"> Financial standings </a>of the Partnership, and read Company docs 
+	 <a href="{% url 'ledger:archives' %}"> here...</a></h4> 
+	
+	{% if object.site_video.url %}
+	 <a  href="{{object.site_video.url }}" target="_blank">watch site video...</a>
+	{% else %}
+	{% endif %}  
+	<p>TheAccountant;Anytime, Anywhere,& Always</p>
+{% endblock content %}
+

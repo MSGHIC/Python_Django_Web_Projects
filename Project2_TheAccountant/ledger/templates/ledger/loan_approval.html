@@ -1,0 +1,34 @@
+{% extends "ledger/base.html" %}
+
+{% load bootstrap3 %}
+
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
+
+{% block header %}
+<div class='jumbotron'>
+	
+	<h2>Your LOAN application has been submitted successfully.</h2>
+	<p>You will be notified by email after it has been approved or for any updates. Thanks</p>
+		
+	</div>
+{% endblock header %}
+{% block content %}
+
+	<div> <h2>Loan Details:</h2>
+	
+			<ul>
+				
+				<h3>Loan date:&nbsp &nbsp{{object2.date_added}}</h3>
+				<h3>Principal:&nbsp&nbsp UGX{{object2.loan_amount}}</h3>
+				<h3>Interest:&nbsp&nbspUGX{{object2.interest}}</h3>
+				<h3>Payable in:&nbsp&nbsp{{object2.duration}} Month(s)</h3>
+				<h3>Monthly Installment:&nbsp&nbspUGX{{ object2.monthly_installment}}</h3>
+				<h3>Status:&nbsp{{object2.status}}</h3>
+				
+			</ul>
+			
+	
+		
+	</div>
+{% endblock content %}

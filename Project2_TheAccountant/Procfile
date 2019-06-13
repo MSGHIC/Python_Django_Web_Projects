@@ -1,0 +1,1 @@
+web: gunicorn TheAccountant.wsgi --log-file -

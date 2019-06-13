@@ -1,0 +1,33 @@
+{% extends "ledger/base.html" %}
+
+	
+{% block header %}
+	<h1 class="title" > Partnership Documents:</h1>
+{% endblock header %}
+
+{% block content %}
+	<h3 class="title">
+			You are about to view  Confidential Documents!!
+	</h3>
+
+		<ol>
+		{% for archive in archives %}
+	
+			<h3><li>{{archive}}</li></h3>
+			{% if archive.title == 'Constitution'%}
+				
+					<a href="{% url 'ledger:pdf_view'  %}">...Read {{object.Company_name}}'s Constitution</a>
+							
+				
+			{% elif archive.title == 'minutes_18'%}
+				<p><a href="{% url 'ledger:minutes_view'  %}">...Read Minutes</a></p>
+			{% endif %}
+			
+		{% empty %}
+			<h4> No documents have been added yet. </h4>
+			
+		{% endfor %}
+	</ol>	
+
+{% endblock content %}
+

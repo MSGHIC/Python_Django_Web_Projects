@@ -1,0 +1,30 @@
+{% extends "ledger/base.html" %}
+
+{% load bootstrap3 %}
+
+{% load fontawesome %}
+{% fontawesome_stylesheet %}
+
+{% block header %}
+<div class='jumbotron'>
+	
+	<h2>Click Bill Button below to bill all members!</h2>
+	<h3> Each member's debt will be increased by 100,000</h3>
+	
+		
+	</div>
+{% endblock header %}
+{% block content %}
+	
+	<form action="{% url 'ledger:bill_increament'%}" method='post'  class="form" >
+			<!--prevent attackers
+			from using the form to gain unauthorized access to the server (this kind of
+			attack is called a cross-site request forgery)-->
+			{% csrf_token %}
+			{% bootstrap_form form %}
+			{% buttons %}
+				<button name="Bill Members" class="btn btn-primary">Bill Members</button>
+			{% endbuttons %}
+		</form>
+
+{% endblock content %}
