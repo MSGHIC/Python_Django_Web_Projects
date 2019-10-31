@@ -7,7 +7,7 @@ gunicorn==19.9.0
 static3==0.7.0
 whitenoise==4.0
 psycopg2-binary==2.7.5
-Pillow==4.2.1
+Pillow==6.2.0
 		
 django-storages==1.7.1
 dropbox==9.3.0
